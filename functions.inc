@@ -659,6 +659,12 @@ function plugin_upgrade_ogp() {
                 $pi_version = '2.0.0';
                 break;
 
+            case '2.0.0':
+            case '2.1.0':
+                // No schema or configuration migration required for 2.2.0.
+                $pi_version = '2.2.0';
+                break;
+
             default:
                 COM_errorLog(
                     'OGP upgrade stopped: unsupported installed version ' . $pi_version
