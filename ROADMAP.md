@@ -1,5 +1,27 @@
 ## Current milestone — OGP 2.1.0
 
+
+## Current milestone — OGP 2.2.0 (handoff, 2026-10-19)
+
+**Branch:** [`develop_2.2.0`](https://github.com/hostellerie/ogp/tree/develop_2.2.0). It was brought up to date with `master` (2.1.0) in merge commit `8508cfe7`; compare at the time showed **0 behind / 6 ahead**. Preserve all 2.1.0 fixes, especially topic SEO titles and article description fallback.
+
+### Implemented in branch (not a deployment claim)
+- [x] Staticpages Open Graph type uses `website` rather than the inherited `article` default.
+- [x] Plugin version is 2.2.0, with a metadata-only upgrade path from 2.1.0.
+- [x] GitHub Actions workflow updated to produce `ogp_2.2.0_1.6.0.zip` with checksum; validates PHP 5.6, 8.1 and 8.3 via lint/contract checks.
+- [x] 2.1.0 baseline merged; no missing master commits at last comparison.
+
+### Remaining acceptance tests
+- [ ] Confirm the [post-merge CI run](https://github.com/hostellerie/ogp/actions/runs/39248292372) succeeded and the ZIP/checksum correspond to the latest branch HEAD.
+- [ ] Inspect zip layout (`ogp/`), exclusions, plugin version, install and upgrade 2.1.0 → 2.2.0 on Geeklog 2.2.2; verify compatibility on PHP 5.6 and PHP 8.1.
+- [ ] Regression-test rendered metadata: homepage `website`; native and rewritten topics `website` with SEO topic titles; Staticpages `website`; articles `article`; registered providers' explicit types are respected.
+- [ ] Check `og:url`, `og:title`, description, image/default fallback, permissions and duplicate OG/Twitter tags.
+- [ ] Test against [LibreOffice FR representative URLs](https://github.com/hostellerie/todo/blob/main/SITES-EDITORIAUX.md#point-de-reprise--libreoffice--eclipse--staticpages--ogp-19-octobre-2026); then repeat across all five language sites.
+- [ ] Refresh 2.2.0 README/release notes and prepare PR/release only after tests. Do not claim production validation without explicit evidence.
+
+**Related Geeklog Core issue, separate repository:** [Staticpages JSON-LD author URL #1227](https://github.com/Geeklog-Core/geeklog/issues/1227). Its `&amp;uid=` bug is not fixed by OGP and needs separate Core patch and regression test.
+
+---
 - [x] Native Geeklog topic URL detection for rewritten topic listings.
 - [x] Topic SEO title preferred for Open Graph metadata.
 - [x] 2.0.0 → 2.1.0 upgrade version transition.
