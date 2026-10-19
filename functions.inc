@@ -316,7 +316,8 @@ function plugin_getheadercode_ogp() {
             }
         } elseif (in_array('staticpages', $_PLUGINS) &&
                    preg_match("@staticpages/index\.php(?:\?page=|/)(.+)$@i", $url, $match)) {
-            // Staticpages
+            // Staticpages are web pages rather than editorial articles.
+            $type = 'website';
             $sp_id = $match[1];
             $sp_id = COM_applyFilter($sp_id);
             $output  = '';
