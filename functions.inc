@@ -422,8 +422,10 @@ function plugin_getheadercode_ogp() {
                     $image = OGP_fixUri($image);
                 }
     
-                if (empty($desc)) {
-                    $desc = $content;
+                if (trim((string) $desc) === '') {
+                    // Staticpages center blocks may contain inline CSS and scripts.
+                    // Use the same sanitized, bounded fallback as for articles.
+                    $desc = OGP_articleFallbackDescription($content);
                 }
             }
         } elseif (in_array('calendar', $_PLUGINS) &&
